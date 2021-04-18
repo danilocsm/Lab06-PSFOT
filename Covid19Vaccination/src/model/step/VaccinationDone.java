@@ -1,17 +1,17 @@
 package model.step;
 
+import model.Subject;
+
 public class VaccinationDone implements VaccinationStep {
 
 	@Override
-	public String checkNextStep() {
-		// TODO Auto-generated method stub
-		return "No more steps. You have been immunized against Covid-19";
+	public void getNextStep(Subject subject) {
+
 	}
 
 	@Override
-	public String getCurrentStep() {
-		// TODO Auto-generated method stub
-		return "Vaccination Done";
+	public String toString() {
+		return "Subject has completed all vaccination steps.";
 	}
-
 }
+

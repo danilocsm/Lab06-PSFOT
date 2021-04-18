@@ -1,17 +1,16 @@
 package model.step;
 
+import model.Subject;
+
 public class ReadyForFirstDose implements VaccinationStep {
 
 	@Override
-	public String checkNextStep() {
-		// TODO Auto-generated method stub
-		return "First Dose Done";
+	public void getNextStep(Subject subject) {
+		subject.setVaccinationStep(new FirstDoseDone());
 	}
-
+	
 	@Override
-	public String getCurrentStep() {
-		// TODO Auto-generated method stub
-		return "Ready for first dose";
+	public String toString() {
+		return "Subject is ready for first dose.";
 	}
-
 }

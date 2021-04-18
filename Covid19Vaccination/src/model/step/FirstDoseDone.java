@@ -1,18 +1,21 @@
 package model.step;
 
-public class FirstDoseDone implements VaccinationStep {
+import java.time.LocalDate;
 
-	
+import model.Subject;
+
+public class FirstDoseDone implements VaccinationStep {
 	
 	@Override
-	public String checkNextStep() {
-		return "Ready for second dose";
+	public void getNextStep(Subject subject) {
+		LocalDate firstDoseDate = LocalDate.now();
+		subject.setFirstDoseDate(firstDoseDate);
+		subject.setVaccinationStep(new ReadyForSecondDose());
 	}
 
 	@Override
-	public String getCurrentStep() {
-		// TODO Auto-generated method stub
-		return "First Dose Done";
+	public String toString() {
+		return "Subject has taken first dose.";
 	}
 
 }

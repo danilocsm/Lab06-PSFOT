@@ -1,17 +1,22 @@
 package model.step;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+import model.Subject;
+
 public class ReadyForSecondDose implements VaccinationStep {
 
 	@Override
-	public String checkNextStep() {
-		// TODO Auto-generated method stub
-		return "Vaccination Done";
+	public void getNextStep(Subject subject) {
+		long daysSinceFirstDose = subject.getFirstDateDose().until(LocalDate.now(), ChronoUnit.DAYS);
+		if(daysSinceFirstDose >= 20){
+			subject.setVaccinationStep(new VaccinationDone());
+		}
 	}
 
 	@Override
-	public String getCurrentStep() {
-		// TODO Auto-generated method stub
-		return "Ready For Second Dose";
+	public String toString() {
+		return "Subject is ready for second dose.";
 	}
-
 }

@@ -1,9 +1,10 @@
 package model.step;
 
+import model.Subject;
+
 public interface VaccinationStep {
 
-	public String checkNextStep();
-
-	public String getCurrentStep();
+	public void getNextStep(Subject subject);
+	public String toString();
 	
 }

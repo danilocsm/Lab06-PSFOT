@@ -1,28 +1,21 @@
 package model;
 
-public enum VaccinationRequirements {
-    VACCINATION_AGE{
+public class VaccinationRequirements {
+    private final int VACCINATION_AGE = 65;
 
-		@Override
-		public String getValue() {
-			return "65";
-		}
-    },
-    VACCINATION_OCCUPATION{
+    private final String VACCINATION_OCCUPATION = "Teacher";
 
-        @Override
-        public String getValue() {
-            return "Teachers";
-        }
-    }, 
-    VACCINATION_COMORBIDITIES{
-        
-        @Override
-        public String getValue() {
-            return "Heart Problems";
-        }
-    };
+    private final String VACCINATION_COMORBIDITY = "Heart disease";
 
-
-    public abstract String getValue();
+    public int getRequiredAge() {
+    	return this.VACCINATION_AGE;
+    }
+    
+    public String getRequiredOccupation() {
+    	return this.VACCINATION_OCCUPATION;
+    }
+    
+    public String getRequiredComorbidity() {
+    	return this.VACCINATION_COMORBIDITY;
+    }
 }

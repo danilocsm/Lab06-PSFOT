@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 import model.step.*;
 
 public class Subject {
@@ -20,12 +22,13 @@ public class Subject {
 
     private String comorbidities;
     
-    private String age;
+    private int age;
 
-	public Subject(VaccinationStep vaccinationStep, String name, String email, String cpf, String address, String phone,
-			String occupation, String comorbidities, String age) {
+	private LocalDate firstDoseDate; 
+
+	public Subject(String name, String email, String cpf, String address, String phone,
+			String occupation, String comorbidities, int age) {
 		super();
-		this.vaccinationStep = vaccinationStep;
 		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
@@ -34,21 +37,35 @@ public class Subject {
 		this.occupation = occupation;
 		this.comorbidities = comorbidities;
 		this.age = age;
+		this.vaccinationStep = new NotReady();
+		this.vaccinationStep.getNextStep(this);
 	}
 
-	public void changeVaccinationStep(VaccinationStep vaccinationStep) {
+	public void updateVaccinationStep() {
+		this.vaccinationStep.getNextStep(this);
+	}
+
+	public String getVaccinationStep() {
+		return this.vaccinationStep.toString();
+	}	
+
+	public void setVaccinationStep(VaccinationStep vaccinationStep) {
         this.vaccinationStep = vaccinationStep;
     }
     
-    public String getStep() {
-    	return this.vaccinationStep.getCurrentStep();
-    }
-    
-    public String getAge() {
+	public void setFirstDoseDate(LocalDate daysSinceFirstDose) {
+		this.firstDoseDate = daysSinceFirstDose;
+	}
+
+	public LocalDate getFirstDateDose() {
+		return this.firstDoseDate;
+	}
+
+    public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
